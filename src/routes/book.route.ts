@@ -1,10 +1,10 @@
-const express = require("express");
+import express, { Express, Request, Response } from "express";
+import bookController from "../controllers/book.controller";
 const router = express.Router();
-const bookController = require("../controllers/book.controller");
 
 router.get("/", bookController.get);
 router.post("/", bookController.create);
 router.put("/", bookController.update);
 router.delete("/", bookController.delete);
 
-module.exports = router;
+export default router;

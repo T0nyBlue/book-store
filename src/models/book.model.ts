@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const mongoosePaginate = require('mongoose-paginate-v2');
+import mongoose from "mongoose";
+import mongoosePaginate from "mongoose-paginate-v2";
 
 const bookSchema = new mongoose.Schema({
   title: {
@@ -12,8 +12,8 @@ const bookSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['drama', 'comedy', 'sport'],
-    default: 'drama',
+    enum: ["drama", "comedy", "sport"],
+    default: "drama",
     required: true,
   },
   quantity: {
@@ -30,6 +30,9 @@ const bookSchema = new mongoose.Schema({
   },
 });
 
-bookSchema.plugin(mongoosePaginate)
+bookSchema.plugin(mongoosePaginate);
 
-module.exports = mongoose.model("book", bookSchema);
+export default mongoose.model<
+  mongoose.Document,
+  mongoose.PaginateModel<mongoose.Document>
+>("book", bookSchema);
